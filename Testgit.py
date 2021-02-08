@@ -15,6 +15,9 @@ sensor = Adafruit_DHT.DHT11
 pin = 4
 write_api = '82E9BOZQJOWXKO4W'
 
+humx = 80
+temx = 20
+
 baseURL = 'https://api.thingspeak.com/update?api_key=%s' % write_api
 
 GPIO.setwarnings(False)
@@ -160,7 +163,7 @@ def update_plot():
 '''
 def lightsignals():
             
-    if humidity >= 85:
+    if humidity >= humx:
         GPIO.output(21, 1)
         time.sleep(1)                 
      
@@ -168,7 +171,7 @@ def lightsignals():
         GPIO.output(21, 0)
                                
             
-    if temperature <= 20:
+    if temperature <= temx:
         GPIO.output(20, 1)
         time.sleep(1)                 
      
