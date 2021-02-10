@@ -1,0 +1,2 @@
+# Aufbau
+![Aufbau](aufbau.png)
