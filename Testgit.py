@@ -22,13 +22,11 @@ baseURL = 'https://api.thingspeak.com/update?api_key=%s' % write_api
 
 GPIO.setwarnings(False)
 
-'''
 GPIO.setmode(GPIO.BCM)           
 GPIO.setup(21, GPIO.OUT)
 
 GPIO.setmode(GPIO.BCM)           
 GPIO.setup(20, GPIO.OUT)
-'''
 
 # The wiring for the LCD is as follows:
 # 1 : GND
@@ -82,23 +80,17 @@ def lcd_init():
   lcd_byte(0x01,LCD_CMD)  
 
 def lcd_string(message,style):
-  # Send string to display
-  # style=1 Left justified
-  # style=2 Centred
-  # style=3 Right justified
-
   if style==1:
-    message = message.ljust(LCD_WIDTH," ")  
+    message = message.ljust(LCD_WIDTH," ")  # style=1 Left justified  
   elif style==2:
-    message = message.center(LCD_WIDTH," ")
+    message = message.center(LCD_WIDTH," ") # style=2 Centred
   elif style==3:
-    message = message.rjust(LCD_WIDTH," ")
+    message = message.rjust(LCD_WIDTH," ")  # style=3 Right justified
 
   for i in range(LCD_WIDTH):
     lcd_byte(ord(message[i]),LCD_CHR)
 
 def lcd_byte(bits, mode):
-
   GPIO.output(LCD_RS, mode) 
 
   GPIO.output(LCD_D4, False)
@@ -160,24 +152,20 @@ def update_plot():
     axs[0].legend(bbox_to_anchor = (1.0, 1), loc = 'upper center')
     axs[1].legend(bbox_to_anchor = (1.0, 1), loc = 'upper center')
     
-'''
-def lightsignals():
-            
+def lightsignals():  
     if humidity >= humx:
         GPIO.output(21, 1)
         time.sleep(1)                 
      
     else:
         GPIO.output(21, 0)
-                               
-            
+                                      
     if temperature <= temx:
         GPIO.output(20, 1)
         time.sleep(1)                 
      
     else:
         GPIO.output(20, 0) 
-'''
 
 def getSensorData():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
