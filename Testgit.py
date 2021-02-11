@@ -131,6 +131,22 @@ def lcd_byte(bits, mode):
   GPIO.output(LCD_E, False)  
   time.sleep(E_DELAY)   
 
+def LCD1():
+    lcd_byte(LCD_LINE_1, LCD_CMD)
+    lcd_string("Luft: %d %%" % humidity, 1)
+    lcd_byte(LCD_LINE_2, LCD_CMD)
+    lcd_string("Temp: %d \u0027C" % temperature, 1)
+    
+    sleep(2.5)
+    
+def LCD2():
+    lcd_byte(LCD_LINE_1, LCD_CMD)
+    lcd_string("Datum:%s" %time.strftime("%m.%d.%Y"), 1)
+    lcd_byte(LCD_LINE_2, LCD_CMD)
+    lcd_string("Zeit: %s" %time.strftime("%H:%M:%S"), 1)
+    
+    sleep(0.5)
+    
 def update_plot():
     axs[0].clear()
     axs[1].clear()
@@ -171,6 +187,14 @@ def getSensorData():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     return (str(humidity), str(temperature))
 
+def realTime():
+    xshum.append(dt.datetime.now().strftime('%H:%M:%S'))
+    xstem.append(dt.datetime.now().strftime('%H:%M:%S'))
+    
+def xyaxis():
+    xshum.append(humidity)
+    ystem.append(temperature)
+
 if __name__ == '__main__':
     
     lcd_init()
@@ -190,7 +214,7 @@ if __name__ == '__main__':
     
     while True:
         
-        #update_plot()
+#        update_plot()
         
         humidity_ts, temperature_ts = getSensorData()
         humidity = float(humidity_ts)
@@ -198,30 +222,18 @@ if __name__ == '__main__':
             
         humidity_ts, temperature_ts = getSensorData()       
                
-        lcd_byte(LCD_LINE_1, LCD_CMD)
-        lcd_string("Luft: %d %%" % humidity, 1)
-        lcd_byte(LCD_LINE_2, LCD_CMD)
-        lcd_string("Temp: %d \u0027C" % temperature, 1)
-        
-        sleep(2.5)
-        
-        lcd_byte(LCD_LINE_1, LCD_CMD)
-        lcd_string("Datum:%s" %time.strftime("%m.%d.%Y"), 1)
-        lcd_byte(LCD_LINE_2, LCD_CMD)
-        lcd_string("Zeit: %s" %time.strftime("%H:%M:%S"), 1)
-        
-        sleep(0.5)
+#        LCD1()    
 
-        #xshum.append(dt.datetime.now().strftime('%H:%M:%S'))
-        #xstem.append(dt.datetime.now().strftime('%H:%M:%S'))
+#        LCD2()  
 
-        #xshum.append(humidity)
-        #ystem.append(temperature)
+#        realTime()
+
+#        xyaxis()
         
         #plt.show()
         #plt.pause(0.0001)
 
-        #lightsignals()
+#        lightsignals()
 
         send_counter += 1
         
