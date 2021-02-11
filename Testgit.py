@@ -192,7 +192,7 @@ def realTime():
     xstem.append(dt.datetime.now().strftime('%H:%M:%S'))
     
 def xyaxis():
-    xshum.append(humidity)
+    yshum.append(humidity)
     ystem.append(temperature)
 
 if __name__ == '__main__':
@@ -214,7 +214,7 @@ if __name__ == '__main__':
     
     while True:
         
-#        update_plot()
+        update_plot()
         
         humidity_ts, temperature_ts = getSensorData()
         humidity = float(humidity_ts)
@@ -222,18 +222,18 @@ if __name__ == '__main__':
             
         humidity_ts, temperature_ts = getSensorData()       
                
-#        LCD1()    
+        LCD1()    
 
-#        LCD2()  
+        LCD2()  
 
-#        realTime()
+        realTime()
 
-#        xyaxis()
+        xyaxis()
         
-        #plt.show()
-        #plt.pause(0.0001)
+        plt.show()
+        plt.pause(0.0001)
 
-#        lightsignals()
+        lightsignals()
 
         send_counter += 1
         
