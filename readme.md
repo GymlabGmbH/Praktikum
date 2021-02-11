@@ -1,10 +1,12 @@
-#DHT11 Sensor mit LCD,Dioden und Thingspeak
+# DHT11 Sensor mit LCD,Dioden und Thingspeak
 
-# Aufbau
+## Darstellung
+### Aufbau
 ![Aufbau](aufbau.png)
 
-#Code
-#Sensordaten
+## Code
+
+### Sensordaten
 
 ```python
 	sensor = Adafruit_DHT.DHT11
@@ -19,7 +21,7 @@
 Benötigt zum Erfassen der Messwerte des DHT11-Sensors.
 Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgegebenen Werte.
 
-#Diagramm
+### Diagramm
 
 ```python
 	def update_plot():
@@ -58,7 +60,7 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 
 ```
 
-#LCD
+### LCD
 
 ```python
 	#Verkabelung
@@ -200,7 +202,7 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 Richtige Verkabelung des LCD. Anschließend Definierung des Displays, Möglichkeiten der Darstellung.
 Anzeige der aktuellen Zeit und der gemessenen Werte.
 
-#Diode
+### Diode
 
 ```python
 	humx = 80
@@ -234,7 +236,7 @@ Anzeige der aktuellen Zeit und der gemessenen Werte.
 ```
 Die Diode geht bei einem bestimmten Messwert an.
 
-#Thingspeak
+### Thingspeak
 
 ```python
 	#Write-Key des Projekts
