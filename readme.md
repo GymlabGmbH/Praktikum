@@ -298,9 +298,9 @@ if __name__ == '__main__':
     lcd_string("Booting...",2)
     time.sleep(30)
     
-    #plt.ion()
-    #fig, axs = plt.subplots(2, 1, constrained_layout=True)
-    #fig.canvas.set_window_title('Live Chart')
+    plt.ion()
+    fig, axs = plt.subplots(2, 1, constrained_layout=True)
+    fig.canvas.set_window_title('Live Chart')
 
     
     while True:
@@ -317,14 +317,14 @@ if __name__ == '__main__':
 
         LCD2()  
 
-#        xaxisRealtime()
+        xaxisRealtime()
 
-#        yaxisMeasure()
+        yaxisMeasure()
         
-        #plt.show()
-        #plt.pause(0.0001)
+        plt.show()
+        plt.pause(0.0001)
 
-#        lightsignals()
+        lightsignals()
 
         send_counter += 1
         
