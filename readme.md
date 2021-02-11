@@ -6,6 +6,11 @@
 
 ## Code
 
+Der Code ist in der Lage, Luftfeuchtigkeit und Temperatur mithilfe des DHT11 zu erfassen und die Werte anschließend auf den Tingspeak-Server hochzuladen.
+Über ein mobiles Endgerät kann man die gemessenen Daten unter thingspeak.com einsehen. Durch den Raspberry Pi läuft das Programm auch ohne Maus, Tastatur und Bildschirm.
+Des Weiteren verfügt der Aufbau über ein LC-Display, auf dem die gemessenen Werte als auch die/das Uhrzeit/Datum angezeigt werden, aber auch optische Rückmeldung, ob etwas geschickt wird/wurde oder nichts senden kann, aufgrund einer fehlenden Internetverbindung.
+Die rote Diode geht bei einer Luftfeuchtigkeit von über 79 an, wobei die grüne bei einer Temperatur von unter 21 Grad an geht.
+
 ### Import
 
 ```python
