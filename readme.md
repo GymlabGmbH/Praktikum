@@ -48,19 +48,30 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 ...
 	
 	#Beschriftung der x-Achsen
-	def realTime():
+	def xaxisRealtime():
 	    xshum.append(dt.datetime.now().strftime('%H:%M:%S'))
 	    xstem.append(dt.datetime.now().strftime('%H:%M:%S'))
 	
 	#Beschriftung der y-Achsen    
-	def xyaxis():
+	def yaxisMeasure():
 	    yshum.append(humidity)
 	    ystem.append(temperature)
 
 ...
 
+	xshum = []
+	xstem = []
+	yshum = []
+	ystem = []
+	
+...	
+
+	plt.ion()
+        fig, axs = plt.subplots(2, 1, constrained_layout=True)
+        fig.canvas.set_window_title('Live Chart')    
 
 ```
+Darstellung des Computer erstellten Live-Plots
 
 ### LCD
 
@@ -266,7 +277,73 @@ Die Dioden gehen bei einem bestimmten Messwert an.
 		    send_counter = 0
 ```
 Da nur alle 15sec bei einem kostenlosen Account etwas geschrieben werden kann, ersetzt die der Counter die überflüßigen Sekunden, wodurch das Programm weiterhin durchlaufen kann ohne jedes mal warten zu müssen.
-	
-   
 
+### Main_Code
 
+```python
+if __name__ == '__main__':
+    
+    lcd_init()
+  
+    GPIO.output(LED_ON, False)
+
+    xshum = []
+    xstem = []
+    yshum = []
+    ystem = []
+    
+    send_counter = 0
+
+    lcd_byte(LCD_LINE_1, LCD_CMD)
+    lcd_string("Booting...",2)
+    time.sleep(30)
+    
+    #plt.ion()
+    #fig, axs = plt.subplots(2, 1, constrained_layout=True)
+    #fig.canvas.set_window_title('Live Chart')
+
+    
+    while True:
+        
+        update_plot()
+        
+        humidity_ts, temperature_ts = getSensorData()
+        humidity = float(humidity_ts)
+        temperature = float(temperature_ts)
+            
+        humidity_ts, temperature_ts = getSensorData()       
+               
+        LCD1()    
+
+        LCD2()  
+
+#        xaxisRealtime()
+
+#        yaxisMeasure()
+        
+        #plt.show()
+        #plt.pause(0.0001)
+
+#        lightsignals()
+
+        send_counter += 1
+        
+        if send_counter == 3:
+            lcd_byte(LCD_LINE_1, LCD_CMD)
+            lcd_string("Sending Data",2)
+            sleep(1.5)
+            try:
+                f = urlopen(baseURL + "&field1=%s&field2=%s" % (humidity, temperature))
+                lcd_byte(LCD_LINE_2, LCD_CMD)
+                lcd_string("Data sent",2)
+                #print (f.read())
+                f.close()
+                sleep(1.5)
+            except:
+                lcd_byte(LCD_LINE_2, LCD_CMD)
+                lcd_string("No connection!",2)
+                sleep(1.5)
+                
+            send_counter = 0
+```
+Der Teil des Code's der auf die Definierungen zugreift und das Programm ausführt
