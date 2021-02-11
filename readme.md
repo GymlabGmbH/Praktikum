@@ -46,13 +46,15 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 	    axs[1].legend(bbox_to_anchor = (1.0, 1), loc = 'upper center')
 
 ...
-
+	
+	#Beschriftung der x-Achsen
 	def realTime():
 	    xshum.append(dt.datetime.now().strftime('%H:%M:%S'))
 	    xstem.append(dt.datetime.now().strftime('%H:%M:%S'))
-	    
+	
+	#Beschriftung der y-Achsen    
 	def xyaxis():
-	    xshum.append(humidity)
+	    yshum.append(humidity)
 	    ystem.append(temperature)
 
 ...
@@ -81,7 +83,8 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 	# 14: Data Bit 7
 	# 15: LCD Backlight +5V**
 	# 16: LCD Backlight GND
-
+	
+	#Pindefinierung
 	LCD_RS = 26
 	LCD_E  = 19
 	LCD_D4 = 13 
@@ -115,7 +118,7 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 	  lcd_byte(0x06,LCD_CMD)
 	  lcd_byte(0x01,LCD_CMD)  
 	
-	#möglichkeiten der Darstellung
+	#Möglichkeiten der Darstellung
 	def lcd_string(message,style):
 	  if style==1:
 	    message = message.ljust(LCD_WIDTH," ")  # style=1 Left justified  
@@ -202,7 +205,7 @@ Bestimmung des Sensors und des Messkanals, anschließende Bestimmung der ausgege
 Richtige Verkabelung des LCD. Anschließend Definierung des Displays, Möglichkeiten der Darstellung.
 Anzeige der aktuellen Zeit und der gemessenen Werte.
 
-### Diode
+### Dioden
 
 ```python
 	humx = 80
@@ -234,7 +237,7 @@ Anzeige der aktuellen Zeit und der gemessenen Werte.
 	    else:
 		GPIO.output(20, 0) 
 ```
-Die Diode geht bei einem bestimmten Messwert an.
+Die Dioden gehen bei einem bestimmten Messwert an.
 
 ### Thingspeak
 
