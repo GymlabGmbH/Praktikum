@@ -1,4 +1,4 @@
-# DHT11 Sensor mit LCD,Dioden und Thingspeak
+# DHT11 Sensor mit LCD, Dioden und Thingspeak
 
 ## Darstellung
 ### Aufbau
