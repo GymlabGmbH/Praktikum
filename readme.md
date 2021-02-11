@@ -1,8 +1,8 @@
 #DHT11 Sensor with LCD,diodes and thingspeak
-## Aufbau
+# Aufbau
 ![Aufbau](aufbau.png)
 
-##Code
+#Code
 
 '''python
 14	sensor = Adafruit_DHT.DHT11
