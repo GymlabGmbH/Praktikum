@@ -276,7 +276,7 @@ Die Dioden gehen bei einem bestimmten Messwert an.
 		    #Zurücksetzten des Zählers  
 		    send_counter = 0
 ```
-Da nur alle 15sec bei einem kostenlosen Account etwas geschrieben werden kann, ersetzt die der Counter die überflüßigen Sekunden, wodurch das Programm weiterhin durchlaufen kann ohne jedes mal warten zu müssen.
+Da nur alle 15sec bei einem kostenlosen Account etwas geschrieben werden kann, ersetzt der Counter die überflüßigen Sekunden, wodurch das Programm weiterhin durchlaufen kann ohne jedes mal warten zu müssen.
 
 ### Main_Code
 
