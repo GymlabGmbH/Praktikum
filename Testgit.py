@@ -254,4 +254,3 @@ if __name__ == '__main__':
                 sleep(1.5)
                 
             send_counter = 0
-            
